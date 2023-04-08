@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
-import { ErrorPage, Root } from "@app/routes";
+import { ErrorPage } from "@app/routes";
 import { Navbar } from "@app/components";
 import { BrowseMovies, FavMovies, Home } from "@app/pages";
 import { Provider } from "react-redux";
