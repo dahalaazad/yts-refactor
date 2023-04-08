@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 import { ytsLogo } from "@app/assets";
 
@@ -14,9 +15,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-end lg:justify-between h-16">
           {/* Logo */}
-          <div className="hidden lg:flex text-white">
+          <Link to="/" className="hidden lg:flex text-white">
             <img src={ytsLogo} alt="yts-logo" />
-          </div>
+          </Link>
 
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             <button
@@ -67,24 +68,33 @@ const Navbar = () => {
 
           <div className="hidden lg:flex lg:items-center lg:w-auto">
             <div className="flex space-x-4">
-              <a
+              <NavLink to="/" className="px-3 py-2">
+                {({ isActive, isPending }) => (
+                  <span className={isActive ? "text-red-500" : "text-white"}>
+                    Home
+                  </span>
+                )}
+              </NavLink>
+              <NavLink to="/browse" className="px-3 py-2">
+                {({ isActive, isPending }) => (
+                  <span className={isActive ? "text-red-500" : "text-white"}>
+                    Browse Movies
+                  </span>
+                )}
+              </NavLink>
+              <NavLink to="/favourites" className="px-3 py-2">
+                {({ isActive, isPending }) => (
+                  <span className={isActive ? "text-red-500" : "text-white"}>
+                    Favourite Movies
+                  </span>
+                )}
+              </NavLink>
+              {/* <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white  rounded-md text-sm font-medium"
               >
                 Browse Movies
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Favourite Movies
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -99,7 +109,7 @@ const Navbar = () => {
           <div className="fixed inset-0">
             <div className="bg-gray-600 opacity-75"></div>
           </div>
-          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+          <div className="relative flex-1 flex flex-col max-w-[160px] w-full bg-white">
             <div className="absolute top-0 right-0 -mr-14 p-1">
               <button
                 type="button"
@@ -123,29 +133,41 @@ const Navbar = () => {
               </button>
             </div>
             <div className="pt-5 pb-4 overflow-y-auto">
-              <div className="flex-shrink-0 flex items-center px-4">
+              <Link to="/" className="flex-shrink-0 flex items-center px-4">
                 <img src={ytsLogo} alt="yts-logo" />
-              </div>
+              </Link>
 
               <nav className="mt-5 px-2 space-y-1">
-                <a
-                  href="#"
+                <NavLink
+                  to="/"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  Home
-                </a>
-                <a
-                  href="#"
+                  {({ isActive, isPending }) => (
+                    <span className={isActive ? "text-red-500" : "text-black"}>
+                      Home
+                    </span>
+                  )}
+                </NavLink>
+                <NavLink
+                  to="/browse"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  Browse Movies
-                </a>
-                <a
-                  href="#"
+                  {({ isActive, isPending }) => (
+                    <span className={isActive ? "text-red-500" : "text-black"}>
+                      Browse Movies
+                    </span>
+                  )}
+                </NavLink>
+                <NavLink
+                  to="/favourites"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  Favourite Movies
-                </a>
+                  {({ isActive, isPending }) => (
+                    <span className={isActive ? "text-red-500" : "text-black"}>
+                      Favourite Movies
+                    </span>
+                  )}
+                </NavLink>
               </nav>
             </div>
           </div>
